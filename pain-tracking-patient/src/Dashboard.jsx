@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "./database";
+import Layout from "./Layout";
 
 function Dashboard() {
 	const auth = getAuth();
@@ -34,15 +35,20 @@ function Dashboard() {
 
 	return (
 		<div>
-			{userDetails ? (
-				<div>
-					<h1>
-						Welcome {userDetails.firstName}{userDetails.lastName}
-					</h1>
-				</div>
-			) : (
-				<p>User not signed in</p>
-			)}
+			<Layout>
+				{userDetails ? (
+					<>
+						<div>
+							<h1>
+								Welcome {userDetails.firstName}
+								{userDetails.lastName}
+							</h1>
+						</div>
+					</>
+				) : (
+					<p>...Loading</p>
+				)}
+			</Layout>
 		</div>
 	);
 }
