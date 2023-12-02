@@ -5,7 +5,8 @@ import "./index.css";
 import SignIn from "./root";
 import Dashboard from "./Dashboard";
 import SignUp from "./login/Login";
-
+import Account from "./Account";
+import Tracker from "./assets/Tracker";
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -18,6 +19,14 @@ const router = createBrowserRouter([
 	{
 		path: "/dashboard",
 		element: <Dashboard />,
+	},
+	{
+		path: "/account",
+		element: <Account />,
+	},
+	{
+		path: "/tracker",
+		element: <Tracker />,
 	},
 ]);
 
