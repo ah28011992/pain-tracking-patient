@@ -10,10 +10,12 @@ import { formattedDate } from "./assets/utility";
 function valuetext(value) {
 	return `${value}°C`;
 }
+
 function Tracker() {
 	const currentUser = auth.currentUser;
 
 	const [painScore, setPainScore] = useState(0);
+	const [isSuccessful, setIsSuccessful] = useState(null);
 
 	const data = {
 		painLevel: painScore,
@@ -36,38 +38,48 @@ function Tracker() {
 			const newDocRef = doc(subcollectionRef);
 
 			await setDoc(newDocRef, data);
+			setIsSuccessful(true);
 			console.log(data, "submitted successfully");
 		} catch (error) {
 			console.error("Error submitting data:", error);
+			setIsSuccessful(false);
 		}
 	};
 
 	return (
-		<Layout>
-			<h2>Track your pain</h2>
-			<p>Use the slider below to set your pain score and then submit</p>
-			<Box
-				id='tracker'
-				sx={{ width: 800 }}>
-				<Slider
-					aria-label='scale'
-					defaultValue={0}
-					getAriaValueText={valuetext}
-					valueLabelDisplay='auto'
-					step={1}
-					marks
-					min={0}
-					max={10}
-					value={painScore}
-					onChange={handleSliderChange}
-				/>
-				<button
-					type='submit'
-					onClick={handleSubmit}>
-					Submit
-				</button>
-			</Box>
-		</Layout>
+		<>
+			<Layout>
+				<h2>Track your pain</h2>
+				<p>Use the slider below to set your pain score and then submit</p>
+				<Box
+					id='tracker'
+					sx={{ width: 800 }}>
+					<Slider
+						aria-label='scale'
+						defaultValue={0}
+						getAriaValueText={valuetext}
+						valueLabelDisplay='auto'
+						step={1}
+						marks
+						min={0}
+						max={10}
+						value={painScore}
+						onChange={handleSliderChange}
+					/>
+					{isSuccessful === true && 
+						"Pain score submitted successfully" 
+					}
+					{isSuccessful === false &&
+						"Error, please try and submit pain score again"}
+
+					<button
+						type='submit'
+						onClick={handleSubmit}>
+						Submit
+					</button>
+				</Box>
+			</Layout>
+		</>
 	);
 }
 

@@ -19,8 +19,6 @@ function Dashboard() {
 					if (userDoc.exists()) {
 						const userData = userDoc.data();
 						setUserDetails(userData);
-						console.log(userData);
-						console.log(user.uid);
 					} else {
 						console.log("User data not found in Firestore");
 					}
