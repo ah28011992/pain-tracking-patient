@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import * as React from "react";
+import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "./database";
@@ -18,6 +19,8 @@ function Dashboard() {
 					if (userDoc.exists()) {
 						const userData = userDoc.data();
 						setUserDetails(userData);
+						console.log(userData);
+						console.log(user.uid);
 					} else {
 						console.log("User data not found in Firestore");
 					}

@@ -6,7 +6,7 @@ import SignIn from "./root";
 import Dashboard from "./Dashboard";
 import SignUp from "./login/Login";
 import Account from "./Account";
-import Tracker from "./assets/Tracker";
+import Tracker from "./Tracker";
 const router = createBrowserRouter([
 	{
 		path: "/",
