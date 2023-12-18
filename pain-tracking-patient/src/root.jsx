@@ -43,24 +43,23 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+	
 	const navigate = useNavigate();
+	
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
 		const formData = new FormData(event.currentTarget);
 		const email = formData.get("email");
 		const password = formData.get("password");
-		const firstName = formData.get("firstName");
-		const lastName = formData.get("lastName");
+	
 
 		try {
 			// Sign in the user
 			const userCredential = await signInWithEmailAndPassword(
 				auth,
 				email,
-				password,
-				firstName,
-				lastName
+				password
 			);
 
 			// Get the authenticated user

@@ -41,6 +41,7 @@ const defaultTheme = createTheme();
 
 export default function SignUp() {
 	const navigate = useNavigate();
+	const auth = getAuth();
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
@@ -51,7 +52,6 @@ export default function SignUp() {
 		const lastName = formData.get("lastName");
 
 		try {
-			const auth = getAuth();
 			const userCredential = await createUserWithEmailAndPassword(
 				auth,
 				email,

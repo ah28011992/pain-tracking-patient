@@ -13,24 +13,14 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
-
-const pages = ["Dashboard", "Tracker"];
-const settings = ["Account", "Logout"];
+import { pageUrls, settingUrls, settings, pages } from "./assets/url";
 
 function ResponsiveAppBar() {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 	const [selectedMenuItem, setSelectedMenuItem] = React.useState(null);
-	const navigate = useNavigate();
-	const pageUrls = {
-		Dashboard: "/dashboard",
-		Tracker: "/tracker",
-	};
 
-	const settingUrls = {
-		Account: "/account",
-		Logout: "/logout",
-	};
+	const navigate = useNavigate();
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
